@@ -1,5 +1,5 @@
 import os
-from flask import Flask, jsonify
+from flask import Flask, jsonify, make_response, request
 
 app = Flask(__name__)
 
@@ -28,6 +28,15 @@ my_services = {"services": [my_service]}
 @app.route('/v2/catalog')
 def catalog():
     return jsonify(my_services)
+
+
+@app.route('/v2/service_instances/<instance_id>', methods=['PUT', 'DELETE',
+           'PATCH'])
+def service_instances(instance_id):
+    if request.method == 'PUT':
+        return make_response(jsonify({}), 201)
+    else:
+        return jsonify({})
 
 
 if __name__ == "__main__":
