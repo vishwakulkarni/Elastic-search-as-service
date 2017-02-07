@@ -1,0 +1,5 @@
+---
+applications:
+- name: cf-service-broker
+  memory: 128MB
+  buildpack: python_buildpack
