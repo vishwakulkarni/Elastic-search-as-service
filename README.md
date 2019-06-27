@@ -11,13 +11,12 @@ requirement:-
 
 Steps to deploy "Elastic search as a service"
 
-1) git clone https://github.com/vishwakulkarni/Elastic-search-as-service.git
+1) `git clone https://github.com/vishwakulkarni/Elastic-search-as-service.git`
+2) `cd Elastic-search-as-service`
 
-2) cd Elastic-search-as-service
+3) `cf push --random-route`
 
-3) cf push --random-route
-
-4) cf apps
+4) `cf apps`
 
 (here you will get route of your application which is deployed)
 example
@@ -28,29 +27,38 @@ OK
 name           requested state   instances   memory   disk   urls
 elk-broker   started           1/1         512M     1G     elk-broker-example.cfapps.io
 
-5)curl alex:bob@${broker_url}/v2/catalog
+5. `curl alex:bob@$elk-broker-example.cfapps.io/v2/catalog`
 
 here alex is username and bob is password
 
-6) cf create-space demo-space \
-   cf target -s demo-space
+ 6.  
+
+    cf create-space demo-space \
+           cf target -s demo-space
 
 create your space(demo-space) and target your cf cli to that space.
 
-7) cf create-service-broker elk-broker  \
-  alex bob https://elk-broker-example.cfapps.io \
-  --space-scoped
+7) 
 
-8) cf marketplace
+    cf create-service-broker elk-broker  \
+      alex bob https://elk-broker-example.cfapps.io \
+      --space-scoped
+
+8) 
+`cf marketplace`
 
 to check for your service live
 
 
-9) cf update-service-broker elk-broker \
-    alex bob https://elk-broker-example.cfapps.io
+9) 
+
+    cf update-service-broker elk-broker \
+        alex bob https://elk-broker-example.cfapps.io
 
 if you want to update your service then do above command
 
 
 
 checkout https://starkandwayne.com/blog/register-your-own-service-broker-with-any-cloud-foundry/ for more.
+
+
