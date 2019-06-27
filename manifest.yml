@@ -1,5 +1,5 @@
 ---
 applications:
-- name: cf-service-broker
+- name: elasticsearch-broker
   memory: 128MB
   buildpack: python_buildpack
